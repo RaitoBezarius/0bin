@@ -22,4 +22,4 @@ zerobinpaste.js: zerobinpaste.coffee
 		|| { npm install coffee-script; coffee=$$(PATH="$$(npm bin):$$PATH" which coffee); } \
 		&& $$coffee -c zerobinpaste.coffee
 
-.PHONY: uglify
+.PHONY: ugly
