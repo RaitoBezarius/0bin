@@ -76,3 +76,9 @@ MAX_SIZE = 1024 * 500
 # total number of unique pastes can be calculated as 2^(6*PASTE_ID_LENGTH)
 # for PASTE_ID_LENGTH=8, for example, it's 2^(6*8) = 281 474 976 710 656
 PASTE_ID_LENGTH = 8
+
+# Admin access
+#ADMIN_SECRET = {
+#    'url': 'secret',
+#    'password': 'pwd',
+#}

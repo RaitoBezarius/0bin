@@ -138,6 +138,50 @@ def display_paste(paste_id):
     return dmerge(context, GLOBAL_CONTEXT)
 
 
+@app.get('/admin/<admin_url>')
+@view('admin')
+def get_admin_page(admin_url, confirmation=None):
+ 
+    # If ADMIN_SECRET doesn't exist, return 404 error
+    if not hasattr(settings, 'ADMIN_SECRET'):
+        return error404(ValueError)
+
+    # context for the templating
+    context = {
+        'admin_url': admin_url,
+        'confirmation': confirmation,
+    }
+
+    return dmerge(context, GLOBAL_CONTEXT)
+
+
+@app.post('/admin/<admin_url>')
+def post_admin_page(admin_url):
+
+    # If ADMIN_SECRET doesn't exist, return 404 error
+    if not hasattr(settings, 'ADMIN_SECRET'):
+        return error404(ValueError)
+
+    # Verification process
+    admin_secret = settings.ADMIN_SECRET
+    good_url = admin_url == admin_secret['url']
+    good_pwd = request.forms.get('inputPassword') == admin_secret['password']
+
+    if good_url and good_pwd:
+        try:
+            Paste(request.forms.get('inputUuid')).delete()
+            confirmation = True
+        except (FileNotFoundError,):
+            confirmation = False
+    else:
+        confirmation = False
+
+    # Confirmation evaluate to True if the paste has been removed,
+    # or to False if an error occured
+
+    return get_admin_page(admin_url, confirmation)
+
+
 @app.error(404)
 @view('404')
 def error404(code):

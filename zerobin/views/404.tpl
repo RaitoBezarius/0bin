@@ -24,7 +24,7 @@
     <option value="1_month">1 month</option>
     <option value="never">Never</option>
   </select>
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-primary btn-send">Submit</button>
 </p>
 <p>
     <div class="progress progress-striped active">

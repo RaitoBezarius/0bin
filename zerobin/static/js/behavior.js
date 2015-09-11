@@ -493,7 +493,7 @@
    posting it using ajax. Then redirect to the address of the
    newly created paste, adding the key in the hash.
 */
-    $('.btn-primary').live("click", function (e) {
+    $('.btn-send').live("click", function (e) {
 
       e.preventDefault();
       var paste = $('textarea').val();
