@@ -171,7 +171,7 @@ def post_admin_page(admin_url):
         try:
             Paste(request.forms.get('inputUuid')).delete()
             confirmation = True
-        except (FileNotFoundError,):
+        except FileNotFoundError:
             confirmation = False
     else:
         confirmation = False
