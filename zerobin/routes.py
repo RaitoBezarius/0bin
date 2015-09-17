@@ -99,7 +99,7 @@ def create_paste():
         return {'status': 'ok', 'paste': paste.uuid}
 
     return {'status': 'error',
-            'message': "Serveur error: the paste couldn't be saved. "
+            'message': "Server error: the paste couldn't be saved. "
                        "Please try later."}
 
 
